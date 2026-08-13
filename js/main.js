@@ -78,4 +78,91 @@
       form.reset();
     });
   }
+
+  /* Work page featured showcase */
+  const showcase = document.querySelector("[data-showcase]");
+  if (showcase) {
+    const slides = Array.from(showcase.querySelectorAll(".showcase-slide"));
+    const dotsWrap = showcase.querySelector("[data-showcase-dots]");
+    let index = slides.findIndex((s) => s.classList.contains("is-active"));
+    if (index < 0) index = 0;
+
+    const renderDots = () => {
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = "";
+      slides.forEach((_, i) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.setAttribute("aria-label", `Go to project ${i + 1}`);
+        if (i === index) btn.classList.add("is-active");
+        btn.addEventListener("click", () => go(i));
+        dotsWrap.appendChild(btn);
+      });
+    };
+
+    const go = (next) => {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
+      renderDots();
+    };
+
+    showcase.querySelectorAll("[data-showcase-prev]").forEach((btn) => {
+      btn.addEventListener("click", () => go(index - 1));
+    });
+    showcase.querySelectorAll("[data-showcase-next]").forEach((btn) => {
+      btn.addEventListener("click", () => go(index + 1));
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!showcase.offsetParent) return;
+      if (e.key === "ArrowLeft") go(index - 1);
+      if (e.key === "ArrowRight") go(index + 1);
+    });
+
+    renderDots();
+  }
+
+  /* Project page multi-video carousel */
+  const videoCarousel = document.querySelector("[data-video-carousel]");
+  if (videoCarousel) {
+    const slides = Array.from(videoCarousel.querySelectorAll(".video-carousel-slide"));
+    const label = videoCarousel.querySelector("[data-video-label]");
+    let index = 0;
+
+    const sync = () => {
+      slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
+      if (label) {
+        const title = slides[index]?.dataset.label || `Video ${index + 1}`;
+        label.textContent = `${title} · ${index + 1} / ${slides.length}`;
+      }
+      // Pause non-active Drive iframes by resetting src
+      slides.forEach((slide, i) => {
+        const frame = slide.querySelector("iframe");
+        if (!frame) return;
+        const src = frame.getAttribute("data-src") || frame.getAttribute("src");
+        if (!src) return;
+        frame.setAttribute("data-src", src);
+        if (i === index) {
+          if (frame.getAttribute("src") !== src) frame.setAttribute("src", src);
+        } else if (frame.getAttribute("src")) {
+          frame.removeAttribute("src");
+        }
+      });
+    };
+
+    videoCarousel.querySelectorAll("[data-video-prev]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        index = (index - 1 + slides.length) % slides.length;
+        sync();
+      });
+    });
+    videoCarousel.querySelectorAll("[data-video-next]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        index = (index + 1) % slides.length;
+        sync();
+      });
+    });
+
+    sync();
+  }
 })();

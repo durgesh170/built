@@ -1575,6 +1575,443 @@ ul {
   text-transform: uppercase;
 }
 
+/* ---------- Work showcase slider (reference layout) ---------- */
+.work-showcase {
+  position: relative;
+  border-bottom: 1px solid rgba(27, 27, 31, 0.12);
+  background: var(--canvas);
+  min-height: calc(100vh - var(--nav-h));
+  display: flex;
+  flex-direction: column;
+}
+
+.showcase-top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.25rem 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .showcase-top {
+    padding: 1.5rem 2.5rem 0;
+  }
+}
+
+.showcase-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgba(27, 27, 31, 0.35);
+  border-radius: 999px;
+  font-family: Oswald, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  background: transparent;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.showcase-close:hover {
+  background: var(--charcoal);
+  color: var(--canvas);
+  border-color: var(--charcoal);
+}
+
+.showcase-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  padding: 1rem 0 3.5rem;
+}
+
+.showcase-slides {
+  position: relative;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .showcase-slides {
+    padding: 0 2.5rem;
+  }
+}
+
+.showcase-slide {
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+  min-height: 520px;
+  animation: fadeUp 0.55s var(--ease);
+}
+
+.showcase-slide.is-active {
+  display: grid;
+}
+
+@media (min-width: 960px) {
+  .showcase-slide.is-active {
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 3rem;
+    min-height: 620px;
+  }
+}
+
+.showcase-copy {
+  position: relative;
+  z-index: 1;
+  padding: 1rem 0 0;
+}
+
+.showcase-ghost {
+  position: absolute;
+  left: -0.15em;
+  top: 35%;
+  transform: translateY(-50%);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(4.5rem, 14vw, 9rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: rgba(27, 27, 31, 0.05);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.showcase-cat {
+  position: relative;
+  font-family: Oswald, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--slate-blue);
+  margin-bottom: 1rem;
+}
+
+.showcase-copy h2 {
+  position: relative;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 3.75rem);
+  line-height: 1.05;
+  font-weight: 500;
+  max-width: 12ch;
+  color: var(--charcoal);
+}
+
+.showcase-copy p {
+  position: relative;
+  margin-top: 1.35rem;
+  max-width: 28rem;
+  color: rgba(27, 27, 31, 0.72);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.showcase-actions {
+  position: relative;
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.showcase-media {
+  position: relative;
+  background: #eceae3;
+  border: 1px solid rgba(27, 27, 31, 0.08);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+@media (min-width: 960px) {
+  .showcase-media {
+    aspect-ratio: 5 / 4;
+    padding: 2rem;
+    min-height: 520px;
+  }
+}
+
+.showcase-media img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(27, 27, 31, 0.14);
+}
+
+.showcase-nav {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.showcase-btn {
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(27, 27, 31, 0.2);
+  background: rgba(245, 245, 240, 0.92);
+  color: var(--charcoal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  box-shadow: 0 6px 20px rgba(27, 27, 31, 0.08);
+}
+
+.showcase-btn:hover {
+  background: var(--charcoal);
+  color: var(--canvas);
+  border-color: var(--charcoal);
+}
+
+.showcase-btn.prev {
+  left: 0.75rem;
+}
+
+.showcase-btn.next {
+  right: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .showcase-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .showcase-btn.prev {
+    left: 1.25rem;
+  }
+
+  .showcase-btn.next {
+    right: 1.25rem;
+  }
+}
+
+.showcase-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0 1.5rem 2rem;
+}
+
+.showcase-dots button {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(27, 27, 31, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.25s, background 0.25s;
+}
+
+.showcase-dots button.is-active {
+  width: 22px;
+  background: var(--charcoal);
+}
+
+.work-all {
+  padding: 4rem 0 5rem;
+  border-bottom: 1px solid rgba(27, 27, 31, 0.12);
+}
+
+.work-all .section-label {
+  margin-bottom: 0.75rem;
+}
+
+.work-all h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- Project detail page ---------- */
+.project-page {
+  padding: calc(var(--nav-h) + 2.5rem) 0 5rem;
+}
+
+.project-page-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.project-back {
+  font-family: Oswald, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(27, 27, 31, 0.65);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+}
+
+.project-back:hover {
+  color: var(--slate-blue);
+}
+
+.project-page-cat {
+  font-family: Oswald, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--slate-blue);
+  margin-bottom: 0.85rem;
+}
+
+.project-page h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1.05;
+  font-weight: 400;
+  max-width: 16ch;
+}
+
+.project-page-role {
+  margin-top: 0.85rem;
+  font-size: 0.95rem;
+  color: rgba(27, 27, 31, 0.65);
+}
+
+.project-page-summary {
+  margin-top: 1.35rem;
+  max-width: 40rem;
+  color: rgba(27, 27, 31, 0.78);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.project-video-block {
+  margin-top: 2.5rem;
+}
+
+.project-video-block + .project-video-block {
+  margin-top: 1.5rem;
+}
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0d0d0f;
+  overflow: hidden;
+  border: 1px solid rgba(27, 27, 31, 0.12);
+}
+
+/* Crop Google Drive chrome so playback feels native */
+.video-embed iframe {
+  position: absolute;
+  top: -70px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 140px);
+  border: 0;
+  background: #000;
+}
+
+/* Soften Drive popup / title overlays visually when possible */
+.video-embed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(245, 245, 240, 0.04);
+}
+
+.video-carousel {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.video-carousel-track {
+  position: relative;
+}
+
+.video-carousel-slide {
+  display: none;
+}
+
+.video-carousel-slide.is-active {
+  display: block;
+  animation: fadeUp 0.45s var(--ease);
+}
+
+.video-carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.video-carousel-label {
+  font-family: Oswald, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(27, 27, 31, 0.6);
+}
+
+.video-carousel-btns {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.video-carousel-btns button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(27, 27, 31, 0.2);
+  background: transparent;
+  color: var(--charcoal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.video-carousel-btns button:hover {
+  background: var(--charcoal);
+  color: var(--canvas);
+}
+
+.project-page-cta {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(27, 27, 31, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
 /* ---------- Animations ---------- */
 @keyframes fadeUp {
   from {
