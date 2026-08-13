@@ -50,14 +50,7 @@
       </div>
 
       <section class="detail-stage">
-        <div class="detail-nav">
-          <button class="showcase-btn prev" type="button" data-detail-prev aria-label="Previous media">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button class="showcase-btn next" type="button" data-detail-next aria-label="Next media">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
+
         <div class="detail-layout container">
           <div class="detail-copy">
             <div class="showcase-ghost" aria-hidden="true">BEFORE</div>
@@ -73,28 +66,34 @@
             </div>
           </div>
           <div class="detail-media" data-detail-media>
-            <div class="detail-slide is-active" data-label="Project still">
+            <div class="detail-slide is-active" data-label="Before / After">
               <div class="detail-media-frame">
-                <img src="../assets/thumbs/beforeafter.jpg" alt="Before &amp; After — Project still" />
-              </div>
-            </div>
-            <div class="detail-slide" data-label="Before / After">
-              <div class="detail-media-frame">
-                <div class="video-embed">
+                <button
+                  class="video-play-card"
+                  type="button"
+                  data-play-video
+                  data-video-src="https://drive.google.com/file/d/1L-3xUeRG2j6wbMPc_mLBtFgx3l6DdyR0/preview?autoplay=1"
+                  aria-label="Play Before &amp; After — Before / After"
+                >
+                  <img src="../assets/thumbs/beforeafter.jpg" alt="" />
+                  <span class="video-play-btn" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
+                </button>
+                <div class="video-embed is-hidden" data-video-mount>
                   <iframe
                     data-src="https://drive.google.com/file/d/1L-3xUeRG2j6wbMPc_mLBtFgx3l6DdyR0/preview"
                     title="Before &amp; After — Before / After"
                     allow="autoplay; fullscreen"
                     allowfullscreen
-                    loading="lazy"
                   ></iframe>
                 </div>
               </div>
             </div>
           </div>
         </div>
-<div class="showcase-dots detail-dots" data-detail-dots></div>
-        <p class="detail-caption container" data-detail-caption>Project still · 1 / 2</p>
+
+
       </section>
     </main>
 

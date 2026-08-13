@@ -79,27 +79,53 @@
     });
   }
 
-  /* Project detail media carousel (images + videos) */
+  const stopVideo = (slide) => {
+    if (!slide) return;
+    const frameWrap = slide.querySelector("[data-video-mount]");
+    const playCard = slide.querySelector("[data-play-video]");
+    const iframe = frameWrap && frameWrap.querySelector("iframe");
+    if (iframe) {
+      iframe.removeAttribute("src");
+    }
+    if (frameWrap) {
+      frameWrap.classList.add("is-hidden");
+      frameWrap.parentElement && frameWrap.parentElement.classList.remove("is-playing");
+    }
+    if (playCard) playCard.classList.remove("is-playing");
+  };
+
+  const playVideo = (btn) => {
+    const slide = btn.closest(".detail-slide");
+    const frameWrap = slide && slide.querySelector("[data-video-mount]");
+    const iframe = frameWrap && frameWrap.querySelector("iframe");
+    const src = btn.getAttribute("data-video-src");
+    if (!frameWrap || !iframe || !src) return;
+
+    // Stop any other playing videos on the page
+    document.querySelectorAll(".detail-slide").forEach((other) => {
+      if (other !== slide) stopVideo(other);
+    });
+
+    iframe.setAttribute("src", src);
+    frameWrap.classList.remove("is-hidden");
+    frameWrap.parentElement && frameWrap.parentElement.classList.add("is-playing");
+    btn.classList.add("is-playing");
+  };
+
+  document.querySelectorAll("[data-play-video]").forEach((btn) => {
+    btn.addEventListener("click", () => playVideo(btn));
+  });
+
+  /* Multi-video carousel on project detail pages */
   const detail = document.querySelector("[data-project-detail]");
   if (detail) {
     const slides = Array.from(detail.querySelectorAll(".detail-slide"));
     const dotsWrap = detail.querySelector("[data-detail-dots]");
     const caption = detail.querySelector("[data-detail-caption]");
+    if (slides.length <= 1) return;
+
     let index = slides.findIndex((s) => s.classList.contains("is-active"));
     if (index < 0) index = 0;
-
-    const activateFrame = (slide, on) => {
-      const frame = slide.querySelector("iframe");
-      if (!frame) return;
-      const src = frame.getAttribute("data-src") || frame.getAttribute("src");
-      if (!src) return;
-      frame.setAttribute("data-src", src);
-      if (on) {
-        if (frame.getAttribute("src") !== src) frame.setAttribute("src", src);
-      } else if (frame.getAttribute("src")) {
-        frame.removeAttribute("src");
-      }
-    };
 
     const renderDots = () => {
       if (!dotsWrap) return;
@@ -107,7 +133,7 @@
       slides.forEach((_, i) => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.setAttribute("aria-label", `Go to media ${i + 1}`);
+        btn.setAttribute("aria-label", `Go to video ${i + 1}`);
         if (i === index) btn.classList.add("is-active");
         btn.addEventListener("click", () => go(i));
         dotsWrap.appendChild(btn);
@@ -115,14 +141,11 @@
     };
 
     const go = (next) => {
+      stopVideo(slides[index]);
       index = (next + slides.length) % slides.length;
-      slides.forEach((slide, i) => {
-        const on = i === index;
-        slide.classList.toggle("is-active", on);
-        activateFrame(slide, on);
-      });
+      slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
       if (caption) {
-        const label = slides[index]?.dataset.label || `Media ${index + 1}`;
+        const label = slides[index]?.dataset.label || `Video ${index + 1}`;
         caption.textContent = `${label} · ${index + 1} / ${slides.length}`;
       }
       renderDots();
@@ -141,6 +164,6 @@
       if (e.key === "ArrowRight") go(index + 1);
     });
 
-    go(index);
+    renderDots();
   }
 })();
