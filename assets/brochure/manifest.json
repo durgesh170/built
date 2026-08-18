@@ -1,0 +1,108 @@
+{
+  "seasons-pearl": {
+    "title": "Seasons Pearl",
+    "folder": "170riABPR75gbcJTM1251u5B6IXwaeeMI",
+    "file_ids": [
+      "1Ht1NforT5oC4Q5V3Qfj3ZWEvdbMYUYrP",
+      "1geMTmmHnoW0ONsIxImSr_h2_TEt2OKxu",
+      "1DAnA_e1yAmU4OriGO6fZG6XEwCptbW5l",
+      "1CUK1a0AdAHqGh5USi_vxFKE5qy9ShExD"
+    ],
+    "images": [
+      "assets/brochure/seasons-pearl/01.jpg",
+      "assets/brochure/seasons-pearl/02.jpg",
+      "assets/brochure/seasons-pearl/03.jpg",
+      "assets/brochure/seasons-pearl/04.jpg"
+    ]
+  },
+  "seasons-green": {
+    "title": "Seasons Green",
+    "folder": "1rHrDKGuiHnLHXicGIpLP2AUe3Pa1KRwK",
+    "file_ids": [
+      "1TDKKdyWxCHiTUie9GACMj_xfmLpJBxEm",
+      "1GinGCfoY2_rQlV_CIfvbTLuQ8Ok4vKZK",
+      "1LNeLfSPr1swrS92ZwG18ShGO0NEc4FE4",
+      "1ObiWiNUllU9Cz12R-ADXkOrxHs4Aboob"
+    ],
+    "images": [
+      "assets/brochure/seasons-green/01.jpg",
+      "assets/brochure/seasons-green/02.jpg",
+      "assets/brochure/seasons-green/03.jpg",
+      "assets/brochure/seasons-green/04.jpg"
+    ]
+  },
+  "sarveshwara": {
+    "title": "Sarveshwara",
+    "folder": "1dVcxx28Ni-i1IYp21BUGl5OEll26pon5",
+    "file_ids": [
+      "1ExvJ-r_na9huLeMlptgKc_JxZ3AUURHQ",
+      "1ujEFPD7gjFrh0R_N_J9eqrxBv_BOwXYZ",
+      "1fVREJ2LEcuXufaQAZiTEOFkw9WE8kBLa",
+      "1Vdr6fIF3mQu3DoWhI3R-dvXgLQkP3UmF"
+    ],
+    "images": [
+      "assets/brochure/sarveshwara/01.jpg",
+      "assets/brochure/sarveshwara/02.jpg",
+      "assets/brochure/sarveshwara/03.jpg",
+      "assets/brochure/sarveshwara/04.jpg"
+    ]
+  },
+  "metro-pride": {
+    "title": "Metro Pride",
+    "folder": "1Bv9E-78PdYVU1gKr7OISdvEPI8mYiLkg",
+    "file_ids": [
+      "1dhB5fuSuaUYIxLX4n8S5pAR3DfSlj0R7",
+      "1-EQkrw6ldQ_GLoQt43Dn10Lri_xicdzd",
+      "1Mrr2ZiCgpyL_4Lu2A8AS1jd4wpeEKhJW",
+      "1rHZz5KBdgi5YYZwgoFVcndt7SbJifgVg"
+    ],
+    "images": [
+      "assets/brochure/metro-pride/01.jpg",
+      "assets/brochure/metro-pride/02.jpg",
+      "assets/brochure/metro-pride/03.jpg",
+      "assets/brochure/metro-pride/04.jpg"
+    ]
+  },
+  "mira-vistara": {
+    "title": "Mira Vistara",
+    "folder": "19wkIpaFTLhVBN61asl70BTJrB17begdy",
+    "file_ids": [
+      "19LgnkXE-IO_dxJApb64z7zx5jKL-6iAj",
+      "1d6f4f4xhaLI08KSD34qgARJl1lp8iupV",
+      "17veA6_FfGISklNx3IlG7l1vewLiahWot",
+      "1NBD9lJGlMeM-9BV2KqLJsjV63bTeOfu7"
+    ],
+    "images": [
+      "assets/brochure/mira-vistara/01.jpg",
+      "assets/brochure/mira-vistara/02.jpg",
+      "assets/brochure/mira-vistara/03.jpg",
+      "assets/brochure/mira-vistara/04.jpg"
+    ]
+  },
+  "infinity-heritage": {
+    "title": "Infinity Heritage",
+    "folder": "1hIEIqiz5veDf45bxMa2ApNJSBU4o_CIZ",
+    "file_ids": [
+      "1uNStOa2lSFFqpkN6I6DRnmMuXsJSuAlK",
+      "1AW5y9XQOOWhlcTU2FN5Dx7zaBrK9L93O",
+      "11UOcRoNYtlx2tTRu7awfMMmXMCrZtkP3",
+      "1a_fy9yLFYx-Dn6yyA3Q5ks7xnVlT4UJM"
+    ],
+    "images": [
+      "assets/brochure/infinity-heritage/01.jpg",
+      "assets/brochure/infinity-heritage/02.jpg",
+      "assets/brochure/infinity-heritage/03.jpg",
+      "assets/brochure/infinity-heritage/04.jpg"
+    ]
+  },
+  "cover-page": {
+    "title": "Cover Page",
+    "folder": "1OnMoHz3Itx2GqDFG0GknRwg8WnJdvNUq",
+    "file_ids": [
+      "1UxR2J1CZa96dW0gslRLfy37oflc8dI65"
+    ],
+    "images": [
+      "assets/brochure/cover-page/01.jpg"
+    ]
+  }
+}

@@ -116,54 +116,54 @@
     btn.addEventListener("click", () => playVideo(btn));
   });
 
-  /* Multi-video carousel on project detail pages */
+  /* Multi-media carousel on project detail pages (images and/or videos) */
   const detail = document.querySelector("[data-project-detail]");
   if (detail) {
     const slides = Array.from(detail.querySelectorAll(".detail-slide"));
     const dotsWrap = detail.querySelector("[data-detail-dots]");
     const caption = detail.querySelector("[data-detail-caption]");
-    if (slides.length <= 1) return;
+    if (slides.length > 1) {
+      let index = slides.findIndex((s) => s.classList.contains("is-active"));
+      if (index < 0) index = 0;
 
-    let index = slides.findIndex((s) => s.classList.contains("is-active"));
-    if (index < 0) index = 0;
+      const renderDots = () => {
+        if (!dotsWrap) return;
+        dotsWrap.innerHTML = "";
+        slides.forEach((_, i) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.setAttribute("aria-label", `Go to slide ${i + 1}`);
+          if (i === index) btn.classList.add("is-active");
+          btn.addEventListener("click", () => go(i));
+          dotsWrap.appendChild(btn);
+        });
+      };
 
-    const renderDots = () => {
-      if (!dotsWrap) return;
-      dotsWrap.innerHTML = "";
-      slides.forEach((_, i) => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.setAttribute("aria-label", `Go to video ${i + 1}`);
-        if (i === index) btn.classList.add("is-active");
-        btn.addEventListener("click", () => go(i));
-        dotsWrap.appendChild(btn);
+      const go = (next) => {
+        stopVideo(slides[index]);
+        index = (next + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
+        if (caption) {
+          const label = slides[index]?.dataset.label || `Slide ${index + 1}`;
+          caption.textContent = `${label} · ${index + 1} / ${slides.length}`;
+        }
+        renderDots();
+      };
+
+      detail.querySelectorAll("[data-detail-prev]").forEach((btn) => {
+        btn.addEventListener("click", () => go(index - 1));
       });
-    };
+      detail.querySelectorAll("[data-detail-next]").forEach((btn) => {
+        btn.addEventListener("click", () => go(index + 1));
+      });
 
-    const go = (next) => {
-      stopVideo(slides[index]);
-      index = (next + slides.length) % slides.length;
-      slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
-      if (caption) {
-        const label = slides[index]?.dataset.label || `Video ${index + 1}`;
-        caption.textContent = `${label} · ${index + 1} / ${slides.length}`;
-      }
+      document.addEventListener("keydown", (e) => {
+        if (!detail.offsetParent) return;
+        if (e.key === "ArrowLeft") go(index - 1);
+        if (e.key === "ArrowRight") go(index + 1);
+      });
+
       renderDots();
-    };
-
-    detail.querySelectorAll("[data-detail-prev]").forEach((btn) => {
-      btn.addEventListener("click", () => go(index - 1));
-    });
-    detail.querySelectorAll("[data-detail-next]").forEach((btn) => {
-      btn.addEventListener("click", () => go(index + 1));
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (!detail.offsetParent) return;
-      if (e.key === "ArrowLeft") go(index - 1);
-      if (e.key === "ArrowRight") go(index + 1);
-    });
-
-    renderDots();
+    }
   }
 })();
