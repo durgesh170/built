@@ -58,10 +58,14 @@
     });
   });
 
-  const form = document.querySelector("#contact-form");
-  const status = document.querySelector("#form-status");
-  if (form) {
-    form.addEventListener("submit", (e) => {
+  const LEAD_EMAIL = "built.productions2025@gmail.com";
+  const FORM_ENDPOINT = `https://formsubmit.co/ajax/${LEAD_EMAIL}`;
+
+  const bindLeadForm = (form) => {
+    const status =
+      form.querySelector(".form-status, #form-status") ||
+      form.parentElement.querySelector(".form-status");
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const data = new FormData(form);
       const name = (data.get("name") || "").toString().trim();
@@ -71,17 +75,93 @@
         if (status) status.textContent = "Please fill in name, email and message.";
         return;
       }
-      if (status) {
-        status.textContent =
-          "Thanks — we received your enquiry. This static site doesn’t send mail yet; WhatsApp or email us to continue.";
-      }
+
       const selectedService = (data.get("service") || "").toString();
-      form.reset();
-      if (selectedService) {
-        const serviceField = form.querySelector('[name="service"]');
-        if (serviceField) serviceField.value = selectedService;
+      const payload = {
+        name,
+        email,
+        phone: (data.get("phone") || "").toString().trim(),
+        service: selectedService,
+        message,
+        _subject: `BUILT website lead${selectedService ? ` — ${selectedService}` : ""}`,
+        _template: "table",
+        _captcha: "false",
+        _replyto: email,
+      };
+
+      if (status) status.textContent = "Sending…";
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(json.message || "Could not send enquiry.");
+        }
+        if (status) {
+          status.textContent =
+            "Thanks — your enquiry was sent to built.productions2025@gmail.com. We’ll reply soon.";
+        }
+        form.reset();
+        if (selectedService) {
+          const serviceField = form.querySelector('[name="service"]');
+          if (serviceField) serviceField.value = selectedService;
+        }
+      } catch (err) {
+        const subject = encodeURIComponent(payload._subject);
+        const body = encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\nPhone: ${payload.phone}\nService: ${selectedService}\n\n${message}`
+        );
+        if (status) {
+          status.textContent =
+            "Opening your email app to send the enquiry to built.productions2025@gmail.com…";
+        }
+        window.location.href = `mailto:${LEAD_EMAIL}?subject=${subject}&body=${body}`;
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
+  };
+
+  document.querySelectorAll("#contact-form, [data-enquire-form]").forEach(bindLeadForm);
+
+  /* Home collage video — muted autoplay, no controls */
+  const collageVideo = document.querySelector("[data-collage-video]");
+  const collageSource = document.querySelector("[data-collage-source]");
+  const collageFallback = document.querySelector("[data-collage-fallback]");
+  if (collageVideo) {
+    const driveId = (collageVideo.getAttribute("data-drive-id") || "").trim();
+    const localSrc = (collageVideo.getAttribute("data-local-src") || "").trim();
+    const src = localSrc || (driveId ? `https://drive.google.com/uc?export=download&id=${driveId}` : "");
+    if (src && collageSource) {
+      collageSource.setAttribute("src", src);
+      collageVideo.load();
+      const tryPlay = () => {
+        collageVideo.muted = true;
+        collageVideo.defaultMuted = true;
+        const playPromise = collageVideo.play();
+        if (playPromise && playPromise.catch) playPromise.catch(() => {});
+      };
+      collageVideo.addEventListener("loadeddata", tryPlay, { once: true });
+      collageVideo.addEventListener(
+        "error",
+        () => {
+          if (collageFallback) collageFallback.hidden = false;
+        },
+        { once: true }
+      );
+      tryPlay();
+    } else if (collageFallback) {
+      collageFallback.hidden = false;
+    }
   }
 
   const stopVideo = (slide) => {

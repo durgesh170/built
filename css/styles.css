@@ -19,6 +19,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -28,11 +30,19 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
-img {
+img,
+video,
+iframe,
+svg {
   max-width: 100%;
   display: block;
+}
+
+iframe {
+  border: 0;
 }
 
 a {
@@ -71,13 +81,71 @@ ul {
 .container {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .container {
     padding: 0 2.5rem;
   }
+}
+
+/* Full-bleed collage video under hero */
+.collage-video {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #0e0e10;
+  overflow: hidden;
+}
+
+.collage-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: min(78vh, 820px);
+  background: #0e0e10;
+}
+
+@media (max-width: 767px) {
+  .collage-video-frame {
+    aspect-ratio: 9 / 14;
+    max-height: 72vh;
+  }
+}
+
+.collage-video-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.collage-video-el::-webkit-media-controls {
+  display: none !important;
+}
+
+.collage-video-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  color: rgba(245, 245, 240, 0.7);
+  font-size: 0.95rem;
+}
+
+.collage-video-fallback[hidden] {
+  display: none !important;
+}
+
+.service-slider {
+  border-top: 1px solid rgba(27, 27, 31, 0.08);
+  border-bottom: 1px solid rgba(27, 27, 31, 0.08);
 }
 
 .italic {
@@ -342,11 +410,13 @@ ul {
 
 .hero-wordmark {
   font-family: "Bebas Neue", Oswald, sans-serif;
-  font-size: clamp(90px, 19vw, 340px);
+  font-size: clamp(72px, 18vw, 340px);
   line-height: 0.8;
   letter-spacing: -0.01em;
   color: var(--brand);
   animation: fadeUp 0.9s var(--ease) both;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .hero-copy {
@@ -2182,4 +2252,84 @@ ul {
   width: 0.45rem;
   height: 0.45rem;
   background: var(--slate-blue);
+}
+
+
+/* ---------- Layout safety / responsive overflow ---------- */
+.site-header,
+.nav-inner,
+.section,
+.page-hero,
+.detail-stage,
+.detail-layout,
+.work-grid,
+.projects-grid,
+.contact-grid,
+.about-grid,
+.industry-panel,
+.footer-cols {
+  max-width: 100%;
+}
+
+.hero-wordmark,
+.showcase-ghost {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.page-hero h1,
+.detail-copy h1,
+.section-title,
+.service-page-hero h1 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.work-card,
+.project-card,
+.project-thumb,
+.detail-media,
+.industry-media,
+.about-media {
+  max-width: 100%;
+}
+
+.work-card img,
+.project-thumb img,
+.industry-media img,
+.about-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .nav-inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .hero.container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .detail-layout {
+    gap: 1.5rem;
+  }
+
+  .detail-media {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .showcase-btn {
+    width: 40px;
+    height: 40px;
+  }
 }
