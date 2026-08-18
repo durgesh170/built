@@ -73,9 +73,14 @@
       }
       if (status) {
         status.textContent =
-          "Thanks — this static demo doesn’t send mail. WhatsApp or email us instead.";
+          "Thanks — we received your enquiry. This static site doesn’t send mail yet; WhatsApp or email us to continue.";
       }
+      const selectedService = (data.get("service") || "").toString();
       form.reset();
+      if (selectedService) {
+        const serviceField = form.querySelector('[name="service"]');
+        if (serviceField) serviceField.value = selectedService;
+      }
     });
   }
 
