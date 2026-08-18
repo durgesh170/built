@@ -1,0 +1,222 @@
+{
+  "logo": {
+    "title": "Logo",
+    "projects": {
+      "balaram-elevate": {
+        "title": "Balaram Elevate",
+        "images": [
+          "assets/logo/balaram-elevate/01.jpg",
+          "assets/logo/balaram-elevate/02.jpg"
+        ]
+      },
+      "chhaya-central-greens": {
+        "title": "Chhaya Central Greens",
+        "images": [
+          "assets/logo/chhaya-central-greens/01.jpg",
+          "assets/logo/chhaya-central-greens/02.jpg"
+        ]
+      },
+      "unfiltered-truth": {
+        "title": "Unfiltered Truth",
+        "images": [
+          "assets/logo/unfiltered-truth/01.jpg",
+          "assets/logo/unfiltered-truth/02.jpg"
+        ]
+      },
+      "sagar-homes": {
+        "title": "Sagar Homes",
+        "images": [
+          "assets/logo/sagar-homes/01.jpg",
+          "assets/logo/sagar-homes/02.jpg"
+        ]
+      }
+    }
+  },
+  "social": {
+    "title": "Social",
+    "projects": {
+      "chavan-sarveshwara": {
+        "title": "Chavan Sarveshwara",
+        "images": [
+          "assets/social/chavan-sarveshwara/01.jpg",
+          "assets/social/chavan-sarveshwara/02.jpg"
+        ]
+      },
+      "nivasa-green-city": {
+        "title": "Nivasa Green City",
+        "images": [
+          "assets/social/nivasa-green-city/01.jpg",
+          "assets/social/nivasa-green-city/02.jpg"
+        ]
+      },
+      "zenith-residences": {
+        "title": "Zenith Residences",
+        "images": [
+          "assets/social/zenith-residences/01.jpg"
+        ]
+      },
+      "dns-bank": {
+        "title": "DNS Bank",
+        "images": [
+          "assets/social/dns-bank/01.jpg"
+        ]
+      },
+      "jade-park": {
+        "title": "Jade Park",
+        "images": [
+          "assets/social/jade-park/01.jpg"
+        ]
+      },
+      "kalyan-group": {
+        "title": "Kalyan Group",
+        "images": [
+          "assets/social/kalyan-group/01.jpg"
+        ]
+      }
+    }
+  },
+  "site-banner": {
+    "title": "Site Banner",
+    "projects": {
+      "seasons-aura": {
+        "title": "Seasons Aura",
+        "images": [
+          "assets/site-banner/seasons-aura/01.jpg",
+          "assets/site-banner/seasons-aura/02.jpg"
+        ]
+      },
+      "chavan-advaitam": {
+        "title": "Chavan Advaitam",
+        "images": [
+          "assets/site-banner/chavan-advaitam/01.jpg"
+        ]
+      },
+      "infinity-heritage": {
+        "title": "Infinity Heritage",
+        "images": [
+          "assets/site-banner/infinity-heritage/01.jpg",
+          "assets/site-banner/infinity-heritage/02.jpg"
+        ]
+      },
+      "seasons-pearl": {
+        "title": "Seasons Pearl",
+        "images": [
+          "assets/site-banner/seasons-pearl/01.jpg"
+        ]
+      }
+    }
+  },
+  "hoarding": {
+    "title": "Hoarding",
+    "projects": {
+      "ccg-green-escape": {
+        "title": "CCG Green Escape",
+        "images": [
+          "assets/hoarding/ccg-green-escape/01.jpg"
+        ]
+      },
+      "metro-regalia": {
+        "title": "Metro Regalia",
+        "images": [
+          "assets/hoarding/metro-regalia/01.jpg"
+        ]
+      },
+      "chavan-advaitam": {
+        "title": "Chavan Advaitam",
+        "images": [
+          "assets/hoarding/chavan-advaitam/01.jpg"
+        ]
+      },
+      "house-of-chavan-pride": {
+        "title": "House of Chavan Pride",
+        "images": [
+          "assets/hoarding/house-of-chavan-pride/01.jpg"
+        ]
+      },
+      "eden-elite": {
+        "title": "Eden Elite",
+        "images": [
+          "assets/hoarding/eden-elite/01.jpg"
+        ]
+      }
+    }
+  },
+  "slide-images": {
+    "title": "Slide Images",
+    "projects": {
+      "eureka": {
+        "title": "Eureka",
+        "images": [
+          "assets/slide-images/eureka/01.jpg"
+        ]
+      },
+      "nivasa-green-city": {
+        "title": "Nivasa Green City",
+        "images": [
+          "assets/slide-images/nivasa-green-city/01.jpg"
+        ]
+      },
+      "house-of-chavan": {
+        "title": "House of Chavan",
+        "images": [
+          "assets/slide-images/house-of-chavan/01.jpg"
+        ]
+      },
+      "atlanta-avadh": {
+        "title": "Atlanta Avadh",
+        "images": [
+          "assets/slide-images/atlanta-avadh/01.jpg"
+        ]
+      },
+      "seasons-pearl": {
+        "title": "Seasons Pearl",
+        "images": [
+          "assets/slide-images/seasons-pearl/01.jpg",
+          "assets/slide-images/seasons-pearl/02.jpg"
+        ]
+      },
+      "dns-bank": {
+        "title": "DNS Bank",
+        "images": [
+          "assets/slide-images/dns-bank/01.jpg"
+        ]
+      },
+      "infinity-heritage": {
+        "title": "Infinity Heritage",
+        "images": [
+          "assets/slide-images/infinity-heritage/01.jpg",
+          "assets/slide-images/infinity-heritage/02.jpg"
+        ]
+      },
+      "seasons-aristo": {
+        "title": "Seasons Aristo",
+        "images": [
+          "assets/slide-images/seasons-aristo/01.jpg"
+        ]
+      },
+      "outdoor-advertising": {
+        "title": "Outdoor Advertising",
+        "images": [
+          "assets/slide-images/outdoor-advertising/01.jpg"
+        ]
+      },
+      "next-address": {
+        "title": "Next Address",
+        "images": [
+          "assets/slide-images/next-address/01.jpg"
+        ]
+      }
+    }
+  },
+  "cover-page": {
+    "title": "Cover Page",
+    "projects": {
+      "chavan-advaitam": {
+        "title": "Chavan Advaitam",
+        "images": [
+          "assets/cover-page/chavan-advaitam/01.jpg"
+        ]
+      }
+    }
+  }
+}
