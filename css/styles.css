@@ -1735,15 +1735,34 @@ ul {
   padding: 1rem 0 3.5rem;
 }
 
-.detail-nav {
+/* Prev/next sit on the media panel edges (not the full stage / text column) */
+.detail-media > .detail-nav {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 3;
+  z-index: 5;
 }
 
-.detail-nav .showcase-btn {
+.detail-media > .detail-nav .showcase-btn {
   pointer-events: auto;
+}
+
+.detail-media > .detail-nav .showcase-btn.prev {
+  left: 0.65rem;
+}
+
+.detail-media > .detail-nav .showcase-btn.next {
+  right: 0.65rem;
+}
+
+@media (min-width: 768px) {
+  .detail-media > .detail-nav .showcase-btn.prev {
+    left: 0.85rem;
+  }
+
+  .detail-media > .detail-nav .showcase-btn.next {
+    right: 0.85rem;
+  }
 }
 
 .detail-layout {
@@ -1812,14 +1831,14 @@ ul {
   display: grid;
   align-items: center;
   justify-items: center;
-  padding: 1.25rem;
-  overflow: hidden;
+  padding: 1.25rem 3.25rem;
+  overflow: visible;
 }
 
 @media (min-width: 960px) {
   .detail-media {
     min-height: 520px;
-    padding: 2rem;
+    padding: 2rem 3.5rem;
   }
 }
 
