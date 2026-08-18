@@ -1842,12 +1842,12 @@ ul {
   }
 }
 
-.detail-media:has(.is-horizontal) {
+.detail-media:has(.detail-slide.is-active .is-horizontal) {
   justify-items: stretch;
 }
 
 @media (min-width: 960px) {
-  .detail-layout:has(.is-horizontal) {
+  .detail-layout:has(.detail-slide.is-active .is-horizontal) {
     grid-template-columns: 0.85fr 1.15fr;
   }
 }
