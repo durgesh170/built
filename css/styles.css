@@ -157,6 +157,17 @@ ul {
   font-family: var(--font-body);
 }
 
+h1.italic,
+h2.italic,
+h3.italic,
+.section-title.italic,
+.page-hero h1 .italic,
+.section-title .italic {
+  font-family: var(--font-bebas);
+  font-style: normal;
+  font-weight: 400;
+}
+
 .text-slate {
   color: var(--slate-blue);
 }
