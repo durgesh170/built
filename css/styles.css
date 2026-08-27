@@ -435,13 +435,13 @@ ul {
   }
 }
 
-/* Giant wordmark — top of hero, spans most of the width */
+/* Giant wordmark — top of hero, dominant like reference */
 .hero-wordmark {
   font-family: var(--font-bebas);
   font-weight: 400;
-  font-size: clamp(4.75rem, 22vw, 10.5rem);
-  line-height: 0.82;
-  letter-spacing: 0.01em;
+  font-size: clamp(5.5rem, 28vw, 12rem);
+  line-height: 0.78;
+  letter-spacing: 0.005em;
   color: var(--brand);
   animation: fadeUp 0.9s var(--ease) both;
   width: 100%;
@@ -451,11 +451,18 @@ ul {
   white-space: nowrap;
 }
 
+@media (min-width: 768px) {
+  .hero-wordmark {
+    font-size: clamp(8rem, 24vw, 16rem);
+  }
+}
+
 @media (min-width: 960px) {
   .hero-wordmark {
-    font-size: clamp(9rem, 19.5vw, 18rem);
-    line-height: 0.8;
-    width: min(100%, 92%);
+    font-size: clamp(12rem, 26vw, 22rem);
+    line-height: 0.76;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -479,9 +486,9 @@ ul {
 
 @media (min-width: 960px) {
   .hero-lower {
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
     column-gap: clamp(2rem, 5vw, 4.5rem);
-    margin-top: clamp(1.75rem, 3.5vh, 2.75rem);
+    margin-top: clamp(1.25rem, 2.8vh, 2.25rem);
     align-items: start;
   }
 }
@@ -593,8 +600,8 @@ ul {
 
 @media (max-width: 767px) {
   .hero-wordmark {
-    white-space: normal;
-    font-size: clamp(4.5rem, 26vw, 7.5rem);
+    white-space: nowrap;
+    font-size: clamp(5rem, 27vw, 8rem);
   }
 
   .hero-lower {
@@ -745,13 +752,43 @@ ul {
   }
 }
 
-.section-title {
+/* Shared heading system — Bebas Regular everywhere */
+.section-title,
+.page-hero h1,
+.service-page-hero h1,
+.clients h2,
+.detail-copy h1,
+.footer-brand .tagline {
   font-family: var(--font-bebas);
-  font-size: clamp(2.4rem, 5vw, 4.25rem);
-  line-height: 0.98;
-  letter-spacing: 0.02em;
-  color: var(--charcoal);
   font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  color: var(--charcoal);
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+.section-title,
+.clients h2 {
+  font-size: clamp(2.5rem, 5.2vw, 4.5rem);
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.section-title .italic,
+.section-title .text-slate,
+.page-hero h1 .italic,
+.page-hero h1 .text-slate,
+.clients h2 .italic,
+.clients h2 .text-slate,
+.service-page-hero h1 .italic,
+.service-page-hero h1 .text-slate {
+  font-family: inherit;
+  font-style: normal;
+  color: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  font-weight: inherit;
 }
 
 /* ---------- Services accordion ---------- */
@@ -785,7 +822,10 @@ ul {
 
 .service-trigger .title {
   font-family: var(--font-bebas);
-  font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-weight: 400;
   color: var(--charcoal);
 }
 
@@ -965,8 +1005,11 @@ ul {
 
 .work-card h3 {
   font-family: var(--font-bebas);
-  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-size: clamp(1.5rem, 2.2vw, 2.1rem);
   font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
   margin-bottom: 0.4rem;
 }
 
@@ -1013,11 +1056,7 @@ ul {
 }
 
 .clients h2 {
-  font-family: var(--font-bebas);
-  font-size: clamp(1.85rem, 4vw, 3rem);
-  line-height: 1.05;
   max-width: 40rem;
-  font-weight: 400;
   margin-bottom: 2.5rem;
 }
 
@@ -1128,8 +1167,11 @@ ul {
 .process-step h3 {
   margin-top: 0.85rem;
   font-family: var(--font-bebas);
-  font-size: 1.65rem;
+  font-size: clamp(1.6rem, 2vw, 2rem);
   font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 .process-step p {
@@ -1707,12 +1749,8 @@ ul {
 }
 
 .page-hero h1 {
-  font-family: var(--font-bebas);
-  font-size: clamp(2.75rem, 8vw, 5.5rem);
-  line-height: 0.95;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  max-width: min(20ch, 100%);
+  font-size: clamp(3rem, 8.5vw, 5.75rem);
+  max-width: min(22ch, 100%);
   overflow-wrap: break-word;
   color: var(--brand);
 }
@@ -1805,8 +1843,11 @@ ul {
 .project-meta h3 {
   margin-top: 0.4rem;
   font-family: var(--font-bebas);
-  font-size: 1.65rem;
+  font-size: clamp(1.55rem, 2vw, 1.9rem);
   font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 .project-meta .role {
@@ -2046,11 +2087,14 @@ ul {
 .detail-copy h1 {
   position: relative;
   font-family: var(--font-bebas);
-  font-size: clamp(2.2rem, 5vw, 3.75rem);
-  line-height: 1.05;
-  font-weight: 500;
-  max-width: 12ch;
+  font-size: clamp(2.4rem, 5.2vw, 4rem);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  max-width: 14ch;
   color: var(--charcoal);
+  font-style: normal;
 }
 
 .detail-summary {
@@ -2357,12 +2401,8 @@ ul {
 }
 
 .service-page-hero h1 {
-  font-family: var(--font-bebas);
-  font-size: clamp(2.4rem, 7vw, 4.5rem);
-  font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: 0.02em;
-  max-width: min(18ch, 100%);
+  font-size: clamp(2.75rem, 7.5vw, 5rem);
+  max-width: min(20ch, 100%);
   color: var(--brand);
   overflow-wrap: break-word;
 }
@@ -2513,7 +2553,7 @@ ul {
   }
 
   .hero-wordmark {
-    font-size: clamp(4.75rem, 22vw, 8rem);
+    font-size: clamp(5rem, 27vw, 8.5rem);
   }
 
   .btn {
